@@ -1,8 +1,11 @@
 <launch>
+    <env name="GAZEBO_RESOURCE_PATH" value="$(find mobile_robot_gazebo)"/>
+
     <include file="$(find mobile_robot_description)/launch/upload.launch"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="use_sim_time" value="true" />
         <arg name="verbose" value="true"/>
+        <arg name="world_name" value="world/my_world.world"/>
     </include>
 
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
