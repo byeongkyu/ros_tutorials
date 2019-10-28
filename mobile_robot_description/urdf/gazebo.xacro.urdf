@@ -1,12 +1,5 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <!-- <gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-            <robotNamespace></robotNamespace>
-            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-        </plugin>
-    </gazebo> -->
-
     <gazebo>
         <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
             <alwaysOn>true</alwaysOn>
@@ -15,33 +8,33 @@
             <rightJoint>r_wheel_joint</rightJoint>
             <wheelSeparation>0.29</wheelSeparation>
             <wheelDiameter>0.07</wheelDiameter>
-            <wheelAcceleration>0.4</wheelAcceleration>
-            <wheelTorque>10</wheelTorque>
+            <wheelAcceleration>1.0</wheelAcceleration>
+            <wheelTorque>1</wheelTorque>
             <commandTopic>cmd_vel</commandTopic>
             <odometryTopic>odom</odometryTopic>
             <odometryFrame>odom</odometryFrame>
+            <publishOdomTF>true</publishOdomTF>
             <robotBaseFrame>base_footprint</robotBaseFrame>
+            <publishWheelTF>true</publishWheelTF>
+            <publishWheelJointState>true</publishWheelJointState>
         </plugin>
     </gazebo>
 
     <gazebo reference="caster_wheel">
         <mu1>0.0</mu1>
         <mu2>0.0</mu2>
+        <material>Gazebo/Orange</material>
     </gazebo>
 
     <gazebo reference="l_wheel">
-        <mu1>1.0</mu1>
-        <mu2>1.0</mu2>
-        <kp>10000000.0</kp>
-        <fdir1>1 0 0</fdir1>
-        <turnGravityOff>false</turnGravityOff>
+        <material>Gazebo/DarkGray</material>
     </gazebo>
 
     <gazebo reference="r_wheel">
-        <mu1>1.0</mu1>
-        <mu2>1.0</mu2>
-        <kp>10000000.0</kp>
-        <fdir1>1 0 0</fdir1>
-        <turnGravityOff>false</turnGravityOff>
+        <material>Gazebo/DarkGray</material>
+    </gazebo>
+
+    <gazebo reference="base_link">
+        <material>Gazebo/Gray</material>
     </gazebo>
 </robot>
