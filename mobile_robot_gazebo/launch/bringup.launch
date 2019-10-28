@@ -1,0 +1,10 @@
+<launch>
+    <include file="$(find mobile_robot_description)/launch/upload.launch"/>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="use_sim_time" value="true" />
+        <arg name="verbose" value="true"/>
+    </include>
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+            args="-urdf -model mobile_robot -param robot_description"/>
+</launch>
