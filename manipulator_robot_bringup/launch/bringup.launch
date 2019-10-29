@@ -1,0 +1,15 @@
+<launch>
+    <include file="$(find ur_description)/launch/ur5_upload.launch">
+        <arg name="limited" value="true"/>
+    </include>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="use_sim_time" value="true" />
+        <arg name="verbose" value="true"/>
+    </include>
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+            args="-urdf -model manipulator_robot -param robot_description -z 0.1"/>
+
+    <include file="$(find manipulator_robot_control)/launch/bringup.launch"/>
+</launch>
