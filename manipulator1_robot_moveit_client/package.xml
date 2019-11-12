@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>manipulator1_moveit_client</name>
+  <name>manipulator1_robot_moveit_client</name>
   <version>0.0.0</version>
-  <description>The manipulator1_moveit_client package</description>
+  <description>The manipulator1_robot_moveit_client package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
