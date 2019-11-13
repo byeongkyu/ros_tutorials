@@ -1,0 +1,18 @@
+<launch>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find tutorial_turtlebot3_navigation)/map/map.yaml"/>
+
+    <node pkg="amcl" type="amcl" name="amcl" output="screen">
+        <rosparam file="$(find tutorial_turtlebot3_navigation)/config/amcl_params.yaml" command="load"/>
+    </node>
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <rosparam file="$(find tutorial_turtlebot3_navigation)/config/move_base_params.yaml" command="load" />
+        <rosparam file="$(find tutorial_turtlebot3_navigation)/config/costmap_common_params.yaml" command="load" ns ="global_costmap" />
+        <rosparam file="$(find tutorial_turtlebot3_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find tutorial_turtlebot3_navigation)/config/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find tutorial_turtlebot3_navigation)/config/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find tutorial_turtlebot3_navigation)/config/base_local_planner_params.yaml" command="load" />
+        <rosparam file="$(find tutorial_turtlebot3_navigation)/config/navfn_global_planner_params.yaml" command="load" />
+    </node>
+
+</launch>
